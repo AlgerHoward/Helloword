@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home Page of Post{% endblock %}
+
+{% block body %}
+    <style>
+        .posts{
+            border-radius: 10px;
+            box-shadow: 0 10px 16px rgba(0, 0, 0, .25);
+            margin-bottom: 40;
+            margin-top: 40px;
+            padding: 40px;
+        }
+        img{
+            border-radius: 10px;
+        }
+    </style>
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success mt-5 text-center">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for p in posts %}
+        <section class="posts">
+            <article>
+                <h2>{{ p.title }}</h2>
+                <div class="metadat">
+                    {{ p.createdAt|date('Y-m-d')}} at {{ p.createdAt|date('H:i')}} by {{ p.author }}
+                </div>
+                <div class="content">
+                    <p>{{ p.content }}</p>
+                    <a href="{{ path('post_show_1', {'id' : p.id}) }}">Read more</a>
+                </div>
+            </article>
+        </section>
+    {% endfor %}
+    <div class="navigation mt-5">
+    </div>
+{% endblock %}

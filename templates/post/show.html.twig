@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Post Show{% endblock %}
+
+{% block body %}
+    <style>
+        .post{
+            border-radius: 10px;
+            box-shadow: 0 10px 16px rgba(0, 0, 0, .25);
+            margin-bottom: 40;
+            margin-top: 40px;
+            padding: 40px;
+        }
+        img{
+            border-radius: 10px;
+        }
+    </style>
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success mt-5 text-center">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <section class="post">
+        <article>
+           <h2>{{ post.title }}</h2>
+                <div class="metadat">
+                    {{ post.createdAt|date('d-m-Y') }} by {{ post.author }}
+                </div>
+            <div class="content">
+             {# {% if ? %}
+                    <img src="{{ path('get_photo', {'filename' : ?}) }}"  width="300" height="200" alt="" class="mt-3 mb-3">
+                {% else %}
+                    <img src="https://picsum.photos/seed/picsum/300/200" alt="" class="mt-3 mb-3">
+                {% endif %} #}
+                <p>{{ post.content }}</p>
+            </div>
+        </article>
+    </section>
+{% endblock %}

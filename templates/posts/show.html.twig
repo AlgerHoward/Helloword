@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    {{ parent() }}
+    <br>
+    {# {% if role == "admin" %}
+        <h1>Hello, {{ uname }}</h1>
+        <p>You have {{ noti|length }} new noti</p>
+    {% endif %} #}
+    <ul>
+    {% for p in posts %}
+        <li>{{ p.title }}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
